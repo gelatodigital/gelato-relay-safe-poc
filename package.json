@@ -21,6 +21,11 @@
     "typechain": "^8.3.0",
     "typescript": ">=4.5.0"
   },
+  "scripts": {
+    "safe-1balance": "yarn hardhat run ./relay-safe-scripts/1balance/safe-1balance.ts",
+    "safe-syncFee-native": "yarn hardhat run ./relay-safe-scripts/syncFee/safe-signer.ts",
+    "safe-syncFee-erc20": "yarn hardhat run ./relay-safe-scripts/syncFee/safe-signer-weth.ts"
+  },
   "dependencies": {
     "@safe-global/protocol-kit": "^5.0.4",
     "@safe-global/relay-kit": "^3.2.4",

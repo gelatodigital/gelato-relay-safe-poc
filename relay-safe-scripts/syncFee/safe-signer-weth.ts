@@ -50,8 +50,6 @@ async function relayTransaction() {
   const relayKit = new GelatoRelayPack({ protocolKit });
   console.log("Initialized Gelato Relay Kit");
 
-  // const isGasTokenCompatible = await relayKit.protocolKit
-
   // Initialize the Counter contract
   const counterContract = new ethers.Contract(
     targetAddress,
@@ -72,7 +70,10 @@ async function relayTransaction() {
   console.log("Prepared transaction data:", transactions);
 
   // Create the Safe transaction
-  let safeTransaction = await relayKit.createTransaction({ transactions });
+  let safeTransaction = await relayKit.createTransaction({
+    transactions,
+    options: { gasToken: WETH_ADDRESS },
+  });
   console.log("Created Safe transaction:", safeTransaction);
 
   // Sign the transaction with the single signer

@@ -70,7 +70,9 @@ async function relayTransaction() {
   console.log("Prepared transaction data:", transactions);
 
   // Create the Safe transaction
-  let safeTransaction = await relayKit.createTransaction({ transactions });
+  let safeTransaction = await relayKit.createTransaction({
+    transactions,
+  });
   console.log("Created Safe transaction:", safeTransaction);
 
   // Sign the transaction with the single signer
@@ -84,7 +86,7 @@ async function relayTransaction() {
   try {
     const response = await relayKit.executeTransaction({
       executable: safeTransaction,
-      options: { gasLimit, isSponsored: false, gasToken: nativeToken }, // Include options for gas limit and sponsorship
+      options: { isSponsored: false, gasToken: nativeToken }, // Include options for gas limit and sponsorship
     });
 
     console.log(
